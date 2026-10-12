@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>TaskFlow</title>
+    <link
+        rel="stylesheet"
+        href="{% static 'style.css' %}"
+    >
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Productivity board</p>
+                <h1>TaskFlow</h1>
+            </div>
+            <div class="header-badge">Live API</div>
+        </header>
+
+        <main class="container">
+            <section class="panel form-panel">
+                <div class="panel-header">
+                    <h2 id="form-title">Add New Task</h2>
+                </div>
+
+                <form id="task-form">
+                    <label class="field-label" for="title">Title</label>
+                    <input
+                        id="title"
+                        name="title"
+                        type="text"
+                        placeholder="Enter task title"
+                        required
+                    >
+
+                    <label class="field-label" for="description">Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Add details for this task"
+                    ></textarea>
+
+                    <div class="field-row">
+                        <div class="select-wrap">
+                            <label class="field-label" for="status">Status</label>
+                            <select id="status" name="status">
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+
+                        <button class="primary-btn" type="submit" id="submit-btn">
+                            Add Task
+                        </button>
+                    </div>
+                </form>
+
+                <div id="message" class="message" aria-live="polite"></div>
+            </section>
+
+            <section class="panel task-panel">
+                <div class="panel-header task-header">
+                    <h2>Tasks</h2>
+                    <div class="stats">
+                        <span>Total <strong id="total-count">0</strong></span>
+                        <span>Pending <strong id="pending-count">0</strong></span>
+                        <span>Done <strong id="completed-count">0</strong></span>
+                    </div>
+                </div>
+
+                <div id="task-list" class="task-list" aria-live="polite"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>
